@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="android.eservices.rendu.presentation.moviedisplay.MovieDisplayActivity">
+    <item
+        android:id="@+id/display_list"
+        android:orderInCategory="100"
+        android:title="@string/display_list"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/display_grid"
+        android:orderInCategory="100"
+        android:title="@string/display_grid"
+        app:showAsAction="never" />
+</menu>

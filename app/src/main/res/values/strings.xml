@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Rendu</string>
+    <string name="display_list">Liste</string>
+    <string name="display_grid">Grille</string>
+</resources>
