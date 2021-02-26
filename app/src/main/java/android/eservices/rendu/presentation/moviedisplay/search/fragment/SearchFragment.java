@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.eservices.rendu.R;
 import android.eservices.rendu.data.di.FakeDependencyInjection;
+import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieActionInterface;
 import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieAdapter;
 import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieItemViewModel;
 import android.eservices.rendu.presentation.viewmodel.MovieSearchViewModel;
@@ -32,7 +33,7 @@ import java.util.TimerTask;
 import static android.eservices.rendu.MovieApplication.displayChangeAction;
 
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements MovieActionInterface {
 
     public static final String TAB_NAME = "Rechercher";
     private View rootView;
@@ -112,21 +113,7 @@ public class SearchFragment extends Fragment {
                 if (s.length() == 0) {
                     movieSearchViewModel.getPopularMovies();
                 } else {
-                    timer.cancel();
-                    timer = new Timer();
-                    int sleep = 350;
-                    if (s.length() == 1)
-                        sleep = 5000;
-                    else if (s.length() <= 3)
-                        sleep = 300;
-                    else if (s.length() <= 5)
-                        sleep = 200;
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            movieSearchViewModel.searchMovies(s);
-                        }
-                    }, sleep);
+                    movieSearchViewModel.searchMovies(s);
                 }
                 return true;
             }
@@ -135,7 +122,7 @@ public class SearchFragment extends Fragment {
 
     private void setupAdapterOnRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
-        movieAdapter = new MovieAdapter();
+        movieAdapter = new MovieAdapter(this);
         recyclerView.setAdapter(movieAdapter);
     }
 
@@ -160,4 +147,12 @@ public class SearchFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onWatchedButtonClicked(int movieId, boolean watched) {
+        if(watched) {
+            movieSearchViewModel.addMovieToWatched(movieId);
+        } else {
+            movieSearchViewModel.removeMovieFromWatched(movieId);
+        }
+    }
 }

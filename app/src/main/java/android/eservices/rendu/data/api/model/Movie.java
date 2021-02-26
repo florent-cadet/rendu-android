@@ -1,5 +1,6 @@
 package android.eservices.rendu.data.api.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
@@ -18,6 +19,11 @@ public class Movie {
     private int vote_count;
     private boolean video;
     private String vote_average;
+    private boolean watched;
+
+    public Movie() {
+        genre_ids = new ArrayList<>();
+    }
 
 
     public String getPoster_path() {
@@ -130,5 +136,13 @@ public class Movie {
 
     public void setVote_average(String vote_average) {
         this.vote_average = vote_average;
+    }
+
+    public boolean isWatched() {
+        return watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
     }
 }

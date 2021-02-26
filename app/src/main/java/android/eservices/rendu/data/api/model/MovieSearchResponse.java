@@ -2,6 +2,7 @@ package android.eservices.rendu.data.api.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieSearchResponse {
@@ -10,6 +11,10 @@ public class MovieSearchResponse {
     private int page;
     private int total_results;
     private int total_pages;
+
+    public MovieSearchResponse() {
+        results = new ArrayList<>();
+    }
 
     public List<Movie> getResults() {
         return results;

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="5dp"
     app:cardElevation="2dp">
 
@@ -31,8 +33,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/movie_overview_textview"
             app:layout_constraintLeft_toRightOf="@id/movie_icon_imageview"
-            app:layout_constraintTop_toTopOf="@id/movie_icon_imageview"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/movie_icon_imageview"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
@@ -43,6 +45,17 @@
             app:layout_constraintLeft_toLeftOf="@id/movie_title_textview"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movie_title_textview" />
+
+        <ImageButton
+            android:id="@+id/movie_seen_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#00FF0000"
+            android:contentDescription="@string/has_film_been_watched"
+            android:src="@drawable/watched_button_selector"
+            app:layout_constraintLeft_toLeftOf="@id/movie_icon_imageview"
+            app:layout_constraintRight_toRightOf="@id/movie_icon_imageview"
+            app:layout_constraintTop_toBottomOf="@id/movie_icon_imageview" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

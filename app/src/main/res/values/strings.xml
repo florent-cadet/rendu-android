@@ -2,4 +2,5 @@
     <string name="app_name">Rendu</string>
     <string name="display_list">Liste</string>
     <string name="display_grid">Grille</string>
+    <string name="has_film_been_watched">Avez-vous vu ce film ?</string>
 </resources>

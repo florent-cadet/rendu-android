@@ -13,6 +13,7 @@ import java.util.List;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -37,6 +38,8 @@ public class MovieSearchViewModel extends ViewModel {
     public MutableLiveData<Boolean> getIsDataLoading() {
         return isDataLoading;
     }
+    final MutableLiveData<Event<Integer>> movieAddedEvent = new MutableLiveData<Event<Integer>>();
+    final MutableLiveData<Event<Integer>> movieDeletedEvent = new MutableLiveData<Event<Integer>>();
 
     public void searchMovies(String query) {
         isDataLoading.postValue(true);
@@ -78,6 +81,40 @@ public class MovieSearchViewModel extends ViewModel {
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         isDataLoading.setValue(false);
+                    }
+                }));
+    }
+
+    public void addMovieToWatched(final int movieId) {
+        compositeDisposable.add(movieDisplayRepository.addMovieToWatched(movieId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        movieAddedEvent.setValue(new Event<Integer>(movieId));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
+    }
+
+    public void removeMovieFromWatched(final int movieId) {
+        compositeDisposable.add(movieDisplayRepository.removeMovieFromWatched(movieId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        movieDeletedEvent.setValue(new Event<Integer>(movieId));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
                     }
                 }));
     }

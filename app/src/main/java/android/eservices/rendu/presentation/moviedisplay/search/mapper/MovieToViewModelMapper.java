@@ -16,6 +16,7 @@ public class MovieToViewModelMapper {
             movieItemViewModel.setId(movie.getId());
             movieItemViewModel.setTitle(movie.getTitle());
             movieItemViewModel.setOverview(movie.getOverview());
+            movieItemViewModel.setWatched(movie.isWatched());
             if (movie.getPoster_path() != null) {
                 movieItemViewModel.setPosterUrl("https://image.tmdb.org/t/p/w500/" + movie.getPoster_path());
             }

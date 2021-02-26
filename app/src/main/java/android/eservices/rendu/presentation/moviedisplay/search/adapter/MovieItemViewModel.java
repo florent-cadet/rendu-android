@@ -6,6 +6,7 @@ public class MovieItemViewModel {
     private String posterUrl;
     private String title;
     private String overview;
+    private boolean watched;
 
 
     public int getId() {
@@ -38,5 +39,13 @@ public class MovieItemViewModel {
 
     public void setOverview(String overview) {
         this.overview = overview;
+    }
+
+    public boolean isWatched() {
+        return watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
     }
 }

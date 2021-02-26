@@ -2,10 +2,15 @@ package android.eservices.rendu.data.di;
 
 import android.content.Context;
 import android.eservices.rendu.data.api.MovieDisplayService;
+import android.eservices.rendu.data.db.MovieDatabase;
 import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayDataRepository;
 import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayRepository;
+import android.eservices.rendu.data.repository.moviedisplay.local.MovieDisplayLocalDataSource;
+import android.eservices.rendu.data.repository.moviedisplay.mapper.MovieDetailsResponseToMovieEntityMapper;
 import android.eservices.rendu.data.repository.moviedisplay.remote.MovieDisplayRemoteDataSource;
 import android.eservices.rendu.presentation.viewmodel.ViewModelFactory;
+
+import androidx.room.Room;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
@@ -24,6 +29,7 @@ public class FakeDependencyInjection {
     private static MovieDisplayRepository movieDisplayRepository;
     private static Context applicationContext;
     private static ViewModelFactory viewModelFactory;
+    private static MovieDatabase movieDatabase;
 
     public static ViewModelFactory getViewModelFactory() {
         if (viewModelFactory == null) {
@@ -35,7 +41,7 @@ public class FakeDependencyInjection {
 
     public static MovieDisplayRepository getMovieDisplayRepository() {
         if (movieDisplayRepository == null) {
-            movieDisplayRepository = new MovieDisplayDataRepository(new MovieDisplayRemoteDataSource(getMovieDisplayService()));
+            movieDisplayRepository = new MovieDisplayDataRepository(new MovieDisplayRemoteDataSource(getMovieDisplayService()), new MovieDisplayLocalDataSource(getMovieDatabase()), new MovieDetailsResponseToMovieEntityMapper());
         }
         return movieDisplayRepository;
     }
@@ -77,4 +83,11 @@ public class FakeDependencyInjection {
         applicationContext = context;
     }
 
+    public static MovieDatabase getMovieDatabase() {
+        if (movieDatabase == null) {
+            movieDatabase = Room.databaseBuilder(applicationContext,
+                    MovieDatabase.class, "moviedatabase").build();
+        }
+        return movieDatabase;
+    }
 }
