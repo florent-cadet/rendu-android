@@ -2,6 +2,9 @@ package android.eservices.rendu.data.repository.moviedisplay.mapper;
 
 import android.eservices.rendu.data.api.model.MovieDetailsResponse;
 import android.eservices.rendu.data.entity.MovieEntity;
+import android.text.format.DateFormat;
+
+import java.util.Date;
 
 public class MovieDetailsResponseToMovieEntityMapper {
 
@@ -10,6 +13,8 @@ public class MovieDetailsResponseToMovieEntityMapper {
         movieEntity.setId(movie.getId());
         movieEntity.setOverview(movie.getOverview());
         movieEntity.setTitle(movie.getTitle());
+        movieEntity.setPosterPath(movie.getPosterPath());
+        movieEntity.setSeenDate(DateFormat.format("dd-MM-yyyy", new Date()).toString());
         return movieEntity;
     }
 }

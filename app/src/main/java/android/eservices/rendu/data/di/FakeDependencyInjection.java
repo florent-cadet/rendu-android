@@ -86,7 +86,7 @@ public class FakeDependencyInjection {
     public static MovieDatabase getMovieDatabase() {
         if (movieDatabase == null) {
             movieDatabase = Room.databaseBuilder(applicationContext,
-                    MovieDatabase.class, "moviedatabase").build();
+                    MovieDatabase.class, "movie_database").build();
         }
         return movieDatabase;
     }

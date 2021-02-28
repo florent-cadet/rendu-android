@@ -1,10 +1,14 @@
 package android.eservices.rendu.data.api.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ProductionCompany {
     private String name;
     private int id;
-    private String logo_path;
-    private String origin_country;
+    @SerializedName("logo_path")
+    private String logoPath;
+    @SerializedName("origin_country")
+    private String originCountry;
 
     public String getName() {
         return name;
@@ -22,19 +26,19 @@ public class ProductionCompany {
         this.id = id;
     }
 
-    public String getLogo_path() {
-        return logo_path;
+    public String getLogoPath() {
+        return logoPath;
     }
 
-    public void setLogo_path(String logo_path) {
-        this.logo_path = logo_path;
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
     }
 
-    public String getOrigin_country() {
-        return origin_country;
+    public String getOriginCountry() {
+        return originCountry;
     }
 
-    public void setOrigin_country(String origin_country) {
-        this.origin_country = origin_country;
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
     }
 }

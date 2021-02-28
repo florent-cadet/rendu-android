@@ -1,6 +1,7 @@
-package android.eservices.rendu.presentation.moviedisplay.search.adapter;
+package android.eservices.rendu.presentation.moviedisplay.seen.adapter;
 
 import android.eservices.rendu.R;
+import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieItemViewModel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
+public class MovieWatchedAdapter extends RecyclerView.Adapter<MovieWatchedAdapter.MovieViewHolder> {
 
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
@@ -26,26 +27,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         private View v;
         private MovieItemViewModel movieItemViewModel;
         private ImageButton movieWatchedButton;
-        private MovieActionInterface movieActionInterface;
+        private MovieWatchedActionInterface movieWatchedActionInterface;
+        private TextView seenDateTextView;
 
-        public MovieViewHolder(final View v, final MovieActionInterface movieActionInterface) {
+        public MovieViewHolder(final View v, final MovieWatchedActionInterface movieWatchedActionInterface) {
             super(v);
             this.v = v;
-            this.movieActionInterface = movieActionInterface;
+            this.movieWatchedActionInterface = movieWatchedActionInterface;
             titleTextView = v.findViewById(R.id.movie_title_textview);
             overviewTextView = v.findViewById(R.id.movie_overview_textview);
             posterImageView = v.findViewById(R.id.movie_icon_imageview);
+            seenDateTextView = v.findViewById(R.id.movie_seen_date_textview);
             movieWatchedButton = v.findViewById(R.id.movie_seen_button);
             movieWatchedButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(movieItemViewModel.getSeenDate() == null) {
-                        movieItemViewModel.setSeenDate("watched");
-                    } else {
-                        movieItemViewModel.setSeenDate(null);
-                    }
-                    movieActionInterface.onWatchedButtonClicked(movieItemViewModel.getId(), movieItemViewModel.getSeenDate() != null);
-                    movieWatchedButton.setSelected(movieItemViewModel.getSeenDate() != null);
+                    movieWatchedActionInterface.onRemoveWatchedMovie(movieItemViewModel.getId());
                 }
             });
         }
@@ -54,7 +51,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             this.movieItemViewModel = movieItemViewModel;
             titleTextView.setText(movieItemViewModel.getTitle());
             overviewTextView.setText(movieItemViewModel.getOverview());
-            movieWatchedButton.setSelected(movieItemViewModel.getSeenDate() != null);
+            seenDateTextView.setText("Vu le : \n" + movieItemViewModel.getSeenDate());
+            movieWatchedButton.setSelected(true);
             Glide.with(v)
                     .load(movieItemViewModel.getPosterUrl())
                     .centerCrop()
@@ -65,11 +63,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     private List<MovieItemViewModel> movieItemViewModelList;
-    private MovieActionInterface movieActionInterface;
+    private MovieWatchedActionInterface movieWatchedActionInterface;
 
-    public MovieAdapter(MovieActionInterface movieActionInterface) {
+    public MovieWatchedAdapter(MovieWatchedActionInterface movieWatchedActionInterface) {
         movieItemViewModelList = new ArrayList<>();
-        this.movieActionInterface = movieActionInterface;
+        this.movieWatchedActionInterface = movieWatchedActionInterface;
     }
 
     public void bindViewModels(List<MovieItemViewModel> movieItemViewModelList) {
@@ -82,8 +80,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public MovieViewHolder onCreateViewHolder(ViewGroup parent,
                                               int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_movie, parent, false);
-        MovieViewHolder movieViewHolder = new MovieViewHolder(v, movieActionInterface);
+                .inflate(R.layout.item_watched_movie, parent, false);
+        MovieViewHolder movieViewHolder = new MovieViewHolder(v, movieWatchedActionInterface);
         return movieViewHolder;
     }
 
@@ -96,5 +94,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public int getItemCount() {
         return movieItemViewModelList.size();
     }
+
 
 }

@@ -16,6 +16,12 @@ public class MovieEntity {
 
     private String title;
 
+    @ColumnInfo(name = "poster_path")
+    private String posterPath;
+
+    @ColumnInfo(name = "seen_date")
+    private String seenDate;
+
     public int getId() {
         return id;
     }
@@ -38,5 +44,21 @@ public class MovieEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public String getSeenDate() {
+        return seenDate;
+    }
+
+    public void setSeenDate(String seenDate) {
+        this.seenDate = seenDate;
     }
 }

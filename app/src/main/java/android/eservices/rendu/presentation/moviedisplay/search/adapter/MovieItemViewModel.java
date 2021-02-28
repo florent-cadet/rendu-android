@@ -6,7 +6,7 @@ public class MovieItemViewModel {
     private String posterUrl;
     private String title;
     private String overview;
-    private boolean watched;
+    private String seenDate;
 
 
     public int getId() {
@@ -41,11 +41,11 @@ public class MovieItemViewModel {
         this.overview = overview;
     }
 
-    public boolean isWatched() {
-        return watched;
+    public String getSeenDate() {
+        return seenDate;
     }
 
-    public void setWatched(boolean watched) {
-        this.watched = watched;
+    public void setSeenDate(String seenDate) {
+        this.seenDate = seenDate;
     }
 }

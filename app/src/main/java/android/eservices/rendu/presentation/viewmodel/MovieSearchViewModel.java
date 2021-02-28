@@ -31,15 +31,11 @@ public class MovieSearchViewModel extends ViewModel {
     private MutableLiveData<List<MovieItemViewModel>> movies = new MutableLiveData<List<MovieItemViewModel>>();
     private MutableLiveData<Boolean> isDataLoading = new MutableLiveData<Boolean>();
 
-    public MutableLiveData<List<MovieItemViewModel>> getMovies() {
-        return movies;
-    }
+    public MutableLiveData<List<MovieItemViewModel>> getMovies() { return movies; }
+    public MutableLiveData<Boolean> getIsDataLoading() { return isDataLoading; }
 
-    public MutableLiveData<Boolean> getIsDataLoading() {
-        return isDataLoading;
-    }
-    final MutableLiveData<Event<Integer>> movieAddedEvent = new MutableLiveData<Event<Integer>>();
-    final MutableLiveData<Event<Integer>> movieDeletedEvent = new MutableLiveData<Event<Integer>>();
+    private MutableLiveData<Event<Integer>> movieAddedEvent = new MutableLiveData<Event<Integer>>();
+    private MutableLiveData<Event<Integer>> movieDeletedEvent = new MutableLiveData<Event<Integer>>();
 
     public void searchMovies(String query) {
         isDataLoading.postValue(true);

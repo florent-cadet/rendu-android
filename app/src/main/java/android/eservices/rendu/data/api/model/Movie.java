@@ -1,37 +1,47 @@
 package android.eservices.rendu.data.api.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
 
-    private String poster_path;
+    @SerializedName("poster_path")
+    private String posterPath;
     private boolean adult;
     private String overview;
-    private String release_date;
-    private List<Integer> genre_ids;
+    @SerializedName("release_date")
+    private String releaseDate;
+    @SerializedName("genre_ids")
+    private List<Integer> genreIds;
     private int id;
-    private String original_title;
-    private String original_language;
+    @SerializedName("original_title")
+    private String originalTitle;
+    @SerializedName("original_language")
+    private String originalLanguage;
     private String title;
-    private String backdrop_path;
+    @SerializedName("backdrop_path")
+    private String backdropPath;
     private String popularity;
-    private int vote_count;
+    @SerializedName("vote_count")
+    private int voteCount;
     private boolean video;
-    private String vote_average;
-    private boolean watched;
+    @SerializedName("vote_average")
+    private String voteAverage;
+    private String seenDate;
 
     public Movie() {
-        genre_ids = new ArrayList<>();
+        genreIds = new ArrayList<>();
     }
 
 
-    public String getPoster_path() {
-        return poster_path;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
     public boolean isAdult() {
@@ -50,20 +60,20 @@ public class Movie {
         this.overview = overview;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public List<Integer> getGenre_ids() {
-        return genre_ids;
+    public List<Integer> getGenreIds() {
+        return genreIds;
     }
 
-    public void setGenre_ids(List<Integer> genre_ids) {
-        this.genre_ids = genre_ids;
+    public void setGenreIds(List<Integer> genreIds) {
+        this.genreIds = genreIds;
     }
 
     public int getId() {
@@ -74,20 +84,20 @@ public class Movie {
         this.id = id;
     }
 
-    public String getOriginal_title() {
-        return original_title;
+    public String getOriginalTitle() {
+        return originalTitle;
     }
 
-    public void setOriginal_title(String original_title) {
-        this.original_title = original_title;
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
     }
 
-    public String getOriginal_language() {
-        return original_language;
+    public String getOriginalLanguage() {
+        return originalLanguage;
     }
 
-    public void setOriginal_language(String original_language) {
-        this.original_language = original_language;
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
     }
 
     public String getTitle() {
@@ -98,12 +108,12 @@ public class Movie {
         this.title = title;
     }
 
-    public String getBackdrop_path() {
-        return backdrop_path;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
-    public void setBackdrop_path(String backdrop_path) {
-        this.backdrop_path = backdrop_path;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 
     public String getPopularity() {
@@ -114,12 +124,12 @@ public class Movie {
         this.popularity = popularity;
     }
 
-    public int getVote_count() {
-        return vote_count;
+    public int getVoteCount() {
+        return voteCount;
     }
 
-    public void setVote_count(int vote_count) {
-        this.vote_count = vote_count;
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
     }
 
     public boolean isVideo() {
@@ -130,19 +140,19 @@ public class Movie {
         this.video = video;
     }
 
-    public String getVote_average() {
-        return vote_average;
+    public String getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setVote_average(String vote_average) {
-        this.vote_average = vote_average;
+    public void setVoteAverage(String voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
-    public boolean isWatched() {
-        return watched;
+    public String getSeenDate() {
+        return seenDate;
     }
 
-    public void setWatched(boolean watched) {
-        this.watched = watched;
+    public void setSeenDate(String seenDate) {
+        this.seenDate = seenDate;
     }
 }

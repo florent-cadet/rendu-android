@@ -8,10 +8,12 @@ import android.eservices.rendu.data.repository.moviedisplay.local.MovieDisplayLo
 import android.eservices.rendu.data.repository.moviedisplay.mapper.MovieDetailsResponseToMovieEntityMapper;
 import android.eservices.rendu.data.repository.moviedisplay.remote.MovieDisplayRemoteDataSource;
 
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
+import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.BiFunction;
@@ -38,7 +40,8 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
             public MovieSearchResponse apply(MovieSearchResponse movieSearchResponse, List<Integer> idList) throws Exception {
                 for (Movie movie : movieSearchResponse.getResults()) {
                     if (idList.contains(movie.getId())) {
-                        movie.setWatched(true);
+                        //String non null - la date n'est pas a affichée
+                        movie.setSeenDate("watched");
                     }
                 }
                 return movieSearchResponse;
@@ -53,7 +56,8 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
             public MovieSearchResponse apply(MovieSearchResponse movieSearchResponse, List<Integer> idList) throws Exception {
                 for (Movie movie : movieSearchResponse.getResults()) {
                     if (idList.contains(movie.getId())) {
-                        movie.setWatched(true);
+                        //String non null - la date n'est pas a affichée
+                        movie.setSeenDate("watched");
                     }
                 }
                 return movieSearchResponse;
@@ -79,6 +83,11 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
     @Override
     public Completable removeMovieFromWatched(int movieId) {
         return movieDisplayLocalDataSource.deleteMovieFromWatched(movieId);
+    }
+
+    @Override
+    public Flowable<List<MovieEntity>> getWatchedMovies() {
+        return movieDisplayLocalDataSource.loadWatched();
     }
 
 

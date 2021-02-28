@@ -1,41 +1,55 @@
 package android.eservices.rendu.data.api.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MovieDetailsResponse {
 
     private boolean adult;
-    private String backdrop_path;
-    private MovieCollection belongs_to_collection;
+    @SerializedName("backdrop_path")
+    private String backdropPath;
+    @SerializedName("belongs_to_collection")
+    private MovieCollection belongsToCollection;
     private int budget;
     private List<Genre> genres;
     private String homepage;
     private int id;
-    private String imdb_id;
-    private String original_language;
-    private String original_title;
+    @SerializedName("imdb_id")
+    private String imdbId;
+    @SerializedName("original_language")
+    private String originalLanguage;
+    @SerializedName("original_title")
+    private String originalTitle;
     private String overview;
     private String popularity;
-    private String poster_path;
-    private List<ProductionCompany> production_companies;
-    private List<ProductionCountry> production_countries;
-    private String release_date;
+    @SerializedName("poster_path")
+    private String posterPath;
+    @SerializedName("production_companies")
+    private List<ProductionCompany> productionCompanies;
+    @SerializedName("production_countries")
+    private List<ProductionCountry> productionCountries;
+    @SerializedName("release_date")
+    private String releaseDate;
     private int revenue;
     private int runtime;
-    private List<SpokenLanguage> spoken_languages;
+    @SerializedName("spoken_languages")
+    private List<SpokenLanguage> spokenLanguages;
     private String status;
     private String tagline;
     private String title;
     private boolean video;
-    private String vote_average;
-    private int vote_count;
+    @SerializedName("vote_average")
+    private String voteAverage;
+    @SerializedName("vote_count")
+    private int voteCount;
 
     public MovieDetailsResponse() {
-        belongs_to_collection = new MovieCollection();
-        production_companies = new ArrayList<>();
-        production_countries = new ArrayList<>();
-        spoken_languages = new ArrayList<>();
+        belongsToCollection = new MovieCollection();
+        productionCompanies = new ArrayList<>();
+        productionCountries = new ArrayList<>();
+        spokenLanguages = new ArrayList<>();
     }
 
     public boolean isAdult() {
@@ -46,20 +60,20 @@ public class MovieDetailsResponse {
         this.adult = adult;
     }
 
-    public String getBackdrop_path() {
-        return backdrop_path;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
-    public void setBackdrop_path(String backdrop_path) {
-        this.backdrop_path = backdrop_path;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 
-    public MovieCollection getBelongs_to_collection() {
-        return belongs_to_collection;
+    public MovieCollection getBelongsToCollection() {
+        return belongsToCollection;
     }
 
-    public void setBelongs_to_collection(MovieCollection belongs_to_collection) {
-        this.belongs_to_collection = belongs_to_collection;
+    public void setBelongsToCollection(MovieCollection belongsToCollection) {
+        this.belongsToCollection = belongsToCollection;
     }
 
     public int getBudget() {
@@ -94,28 +108,28 @@ public class MovieDetailsResponse {
         this.id = id;
     }
 
-    public String getImdb_id() {
-        return imdb_id;
+    public String getImdbId() {
+        return imdbId;
     }
 
-    public void setImdb_id(String imdb_id) {
-        this.imdb_id = imdb_id;
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
     }
 
-    public String getOriginal_language() {
-        return original_language;
+    public String getOriginalLanguage() {
+        return originalLanguage;
     }
 
-    public void setOriginal_language(String original_language) {
-        this.original_language = original_language;
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
     }
 
-    public String getOriginal_title() {
-        return original_title;
+    public String getOriginalTitle() {
+        return originalTitle;
     }
 
-    public void setOriginal_title(String original_title) {
-        this.original_title = original_title;
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
     }
 
     public String getOverview() {
@@ -134,36 +148,36 @@ public class MovieDetailsResponse {
         this.popularity = popularity;
     }
 
-    public String getPoster_path() {
-        return poster_path;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
-    public List<ProductionCompany> getProduction_companies() {
-        return production_companies;
+    public List<ProductionCompany> getProductionCompanies() {
+        return productionCompanies;
     }
 
-    public void setProduction_companies(List<ProductionCompany> production_companies) {
-        this.production_companies = production_companies;
+    public void setProductionCompanies(List<ProductionCompany> productionCompanies) {
+        this.productionCompanies = productionCompanies;
     }
 
-    public List<ProductionCountry> getProduction_countries() {
-        return production_countries;
+    public List<ProductionCountry> getProductionCountries() {
+        return productionCountries;
     }
 
-    public void setProduction_countries(List<ProductionCountry> production_countries) {
-        this.production_countries = production_countries;
+    public void setProductionCountries(List<ProductionCountry> productionCountries) {
+        this.productionCountries = productionCountries;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public int getRevenue() {
@@ -182,12 +196,12 @@ public class MovieDetailsResponse {
         this.runtime = runtime;
     }
 
-    public List<SpokenLanguage> getSpoken_languages() {
-        return spoken_languages;
+    public List<SpokenLanguage> getSpokenLanguages() {
+        return spokenLanguages;
     }
 
-    public void setSpoken_languages(List<SpokenLanguage> spoken_languages) {
-        this.spoken_languages = spoken_languages;
+    public void setSpokenLanguages(List<SpokenLanguage> spokenLanguages) {
+        this.spokenLanguages = spokenLanguages;
     }
 
     public String getStatus() {
@@ -222,19 +236,19 @@ public class MovieDetailsResponse {
         this.video = video;
     }
 
-    public String getVote_average() {
-        return vote_average;
+    public String getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setVote_average(String vote_average) {
-        this.vote_average = vote_average;
+    public void setVoteAverage(String voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
-    public int getVote_count() {
-        return vote_count;
+    public int getVoteCount() {
+        return voteCount;
     }
 
-    public void setVote_count(int vote_count) {
-        this.vote_count = vote_count;
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
     }
 }

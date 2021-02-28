@@ -1,5 +1,7 @@
 package android.eservices.rendu.data.api.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +10,10 @@ public class MovieCollection {
     private int id;
     private String name;
     private String overview;
-    private String poster_path;
-    private String backdrop_path;
+    @SerializedName("poster_path")
+    private String posterPath;
+    @SerializedName("backdrop_path")
+    private String backdropPath;
     private List<Movie> parts;
 
     public MovieCollection() {
@@ -40,20 +44,20 @@ public class MovieCollection {
         this.overview = overview;
     }
 
-    public String getPoster_path() {
-        return poster_path;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
-    public String getBackdrop_path() {
-        return backdrop_path;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
-    public void setBackdrop_path(String backdrop_path) {
-        this.backdrop_path = backdrop_path;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 
     public List<Movie> getParts() {

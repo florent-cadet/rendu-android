@@ -1,16 +1,16 @@
-package android.eservices.rendu.presentation.moviedisplay.search.mapper;
+package android.eservices.rendu.presentation.moviedisplay.seen.mapper;
 
-import android.eservices.rendu.data.api.model.Movie;
+import android.eservices.rendu.data.entity.MovieEntity;
 import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieToViewModelMapper {
+public class MovieEntityToWatchedViewModelMapper {
 
-    public List<MovieItemViewModel> map(List<Movie> movieList) {
+    public List<MovieItemViewModel> map(List<MovieEntity> movieList) {
         List<MovieItemViewModel> movieItemViewModelList = new ArrayList<>();
-        for (Movie movie: movieList) {
+        for (MovieEntity movie: movieList) {
             MovieItemViewModel movieItemViewModel = new MovieItemViewModel();
             movieItemViewModel.setId(movie.getId());
             movieItemViewModel.setTitle(movie.getTitle());

@@ -1,16 +1,20 @@
 package android.eservices.rendu.data.api.model;
 
-public class SpokenLanguage {
-    private String iso_639_1;
-    private String name;
-    private String english_name;
+import com.google.gson.annotations.SerializedName;
 
-    public String getIso_639_1() {
-        return iso_639_1;
+public class SpokenLanguage {
+    @SerializedName("iso_639_1")
+    private String iso6391;
+    private String name;
+    @SerializedName("english_name")
+    private String englishName;
+
+    public String getIso6391() {
+        return iso6391;
     }
 
-    public void setIso_639_1(String iso_639_1) {
-        this.iso_639_1 = iso_639_1;
+    public void setIso6391(String iso6391) {
+        this.iso6391 = iso6391;
     }
 
     public String getName() {
@@ -21,11 +25,11 @@ public class SpokenLanguage {
         this.name = name;
     }
 
-    public String getEnglish_name() {
-        return english_name;
+    public String getEnglishName() {
+        return englishName;
     }
 
-    public void setEnglish_name(String english_name) {
-        this.english_name = english_name;
+    public void setEnglishName(String englishName) {
+        this.englishName = englishName;
     }
 }
