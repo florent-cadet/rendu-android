@@ -4,4 +4,5 @@ public interface MovieWatchedActionInterface {
 
     void onRemoveWatchedMovie(int movieId);
 
+    void onItemClicked(int movieId);
 }

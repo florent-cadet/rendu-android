@@ -7,6 +7,7 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 public class MovieDisplayLocalDataSource {
@@ -31,5 +32,9 @@ public class MovieDisplayLocalDataSource {
 
     public Single<List<Integer>> getWatchedIdList() {
         return movieDatabase.movieDao().getWatchedIdList();
+    }
+
+    public Single<MovieEntity> getById(int id) {
+        return movieDatabase.movieDao().getById(id).defaultIfEmpty(new MovieEntity()).toSingle();
     }
 }

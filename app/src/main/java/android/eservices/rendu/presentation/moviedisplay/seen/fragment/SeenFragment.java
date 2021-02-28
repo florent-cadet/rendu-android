@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.eservices.rendu.R;
 import android.eservices.rendu.data.di.FakeDependencyInjection;
+import android.eservices.rendu.presentation.moviedetails.MovieDetailsActivity;
 import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieAdapter;
 import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieItemViewModel;
 import android.eservices.rendu.presentation.moviedisplay.search.fragment.SearchFragment;
@@ -62,8 +63,6 @@ public class SeenFragment extends Fragment implements MovieWatchedActionInterfac
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_seen, container, false);
-        IntentFilter filter = new IntentFilter(displayChangeAction);
-        getActivity().registerReceiver(receiverUpdateDownload, filter);
         return rootView;
     }
 
@@ -74,6 +73,14 @@ public class SeenFragment extends Fragment implements MovieWatchedActionInterfac
         setupLayoutOnRecyclerView(1);
         progressBar = rootView.findViewById(R.id.progress_bar);
         registerViewModels();
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        IntentFilter filter = new IntentFilter(displayChangeAction);
+        getActivity().registerReceiver(receiverUpdateDownload, filter);
     }
 
     private void registerViewModels() {
@@ -128,4 +135,12 @@ public class SeenFragment extends Fragment implements MovieWatchedActionInterfac
     public void onRemoveWatchedMovie(int movieId) {
         movieWatchedViewModel.removeMovieFromWatched(movieId);
     }
+
+    @Override
+    public void onItemClicked(int movieId) {
+        Intent intent = new Intent(getActivity(), MovieDetailsActivity.class);
+        intent.putExtra("movieId", movieId);
+        startActivity(intent);
+    }
+
 }

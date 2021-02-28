@@ -4,4 +4,6 @@ public interface MovieActionInterface {
 
     void onWatchedButtonClicked(int movieId, boolean watched);
 
+    void onItemClicked(int movieId);
+
 }

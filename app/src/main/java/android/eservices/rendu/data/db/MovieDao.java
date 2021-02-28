@@ -10,6 +10,7 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 @Dao
@@ -26,4 +27,8 @@ public interface MovieDao {
 
     @Query("SELECT id from movieentity")
     Single<List<Integer>> getWatchedIdList();
+
+
+    @Query("SELECT * FROM movieentity WHERE id = :id")
+    public Maybe<MovieEntity> getById(int id);
 }

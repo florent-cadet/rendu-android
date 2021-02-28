@@ -90,5 +90,17 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
         return movieDisplayLocalDataSource.loadWatched();
     }
 
+    @Override
+    public Single<MovieDetailsResponse> getMovieById(int movieId) {
+        return movieDisplayRemoteDataSource.getMovieDetails(movieId).zipWith(movieDisplayLocalDataSource.getById(movieId), new BiFunction<MovieDetailsResponse, MovieEntity, MovieDetailsResponse>() {
+
+            @Override
+            public MovieDetailsResponse apply(MovieDetailsResponse movieDetailsResponse, MovieEntity movieEntity) throws Exception {
+                movieDetailsResponse.setSeenDate(movieEntity.getSeenDate());
+                return movieDetailsResponse;
+            }
+        });
+    }
+
 
 }

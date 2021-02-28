@@ -32,6 +32,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             super(v);
             this.v = v;
             this.movieActionInterface = movieActionInterface;
+            this.v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    movieActionInterface.onItemClicked(movieItemViewModel.getId());
+                }
+            });
             titleTextView = v.findViewById(R.id.movie_title_textview);
             overviewTextView = v.findViewById(R.id.movie_overview_textview);
             posterImageView = v.findViewById(R.id.movie_icon_imageview);

@@ -44,6 +44,7 @@ public class MovieDetailsResponse {
     private String voteAverage;
     @SerializedName("vote_count")
     private int voteCount;
+    private String seenDate;
 
     public MovieDetailsResponse() {
         belongsToCollection = new MovieCollection();
@@ -250,5 +251,13 @@ public class MovieDetailsResponse {
 
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public String getSeenDate() {
+        return seenDate;
+    }
+
+    public void setSeenDate(String seenDate) {
+        this.seenDate = seenDate;
     }
 }

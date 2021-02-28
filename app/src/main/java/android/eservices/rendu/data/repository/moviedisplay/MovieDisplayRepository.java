@@ -1,5 +1,6 @@
 package android.eservices.rendu.data.repository.moviedisplay;
 
+import android.eservices.rendu.data.api.model.MovieDetailsResponse;
 import android.eservices.rendu.data.api.model.MovieSearchResponse;
 import android.eservices.rendu.data.entity.MovieEntity;
 
@@ -20,4 +21,6 @@ public interface MovieDisplayRepository {
     Completable removeMovieFromWatched(int movieId);
 
     Flowable<List<MovieEntity>> getWatchedMovies();
+
+    Single<MovieDetailsResponse> getMovieById(int movieId);
 }

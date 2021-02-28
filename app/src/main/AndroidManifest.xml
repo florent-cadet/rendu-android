@@ -5,18 +5,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-
-        android:name="android.eservices.rendu.MovieApplication"
+        android:name=".MovieApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".presentation.moviedetails.MovieDetailsActivity"></activity>
         <activity
-            android:name="android.eservices.rendu.presentation.moviedisplay.MovieDisplayActivity"
+            android:name=".presentation.moviedisplay.MovieDisplayActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
