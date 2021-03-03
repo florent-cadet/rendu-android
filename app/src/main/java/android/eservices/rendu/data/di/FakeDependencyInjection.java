@@ -21,6 +21,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Class to make dependency injections
+ */
 public class FakeDependencyInjection {
 
     private static MovieDisplayService movieDisplayService;
@@ -31,6 +34,10 @@ public class FakeDependencyInjection {
     private static ViewModelFactory viewModelFactory;
     private static MovieDatabase movieDatabase;
 
+    /**
+     * Get the view model factory
+     * @return the viex model factory
+     */
     public static ViewModelFactory getViewModelFactory() {
         if (viewModelFactory == null) {
             viewModelFactory = new ViewModelFactory(getMovieDisplayRepository());
@@ -39,6 +46,10 @@ public class FakeDependencyInjection {
     }
 
 
+    /**
+     * Get the movieDisplayRepository
+     * @return the movieDisplayRepository
+     */
     public static MovieDisplayRepository getMovieDisplayRepository() {
         if (movieDisplayRepository == null) {
             movieDisplayRepository = new MovieDisplayDataRepository(new MovieDisplayRemoteDataSource(getMovieDisplayService()), new MovieDisplayLocalDataSource(getMovieDatabase()), new MovieDetailsResponseToMovieEntityMapper());
@@ -46,6 +57,10 @@ public class FakeDependencyInjection {
         return movieDisplayRepository;
     }
 
+    /**
+     * Get the movie display service
+     * @return the mvoie display service
+     */
     public static MovieDisplayService getMovieDisplayService() {
         if (movieDisplayService == null) {
             movieDisplayService = getRetrofit().create(MovieDisplayService.class);
@@ -53,6 +68,10 @@ public class FakeDependencyInjection {
         return movieDisplayService;
     }
 
+    /**
+     * Get the retrofit
+     * @return the retrofit
+     */
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -72,6 +91,10 @@ public class FakeDependencyInjection {
         return retrofit;
     }
 
+    /**
+     * Get the gson library
+     * @return the gson library
+     */
     public static Gson getGson() {
         if (gson == null) {
             gson = new Gson();
@@ -79,10 +102,18 @@ public class FakeDependencyInjection {
         return gson;
     }
 
+    /**
+     * Set the application context
+     * @param context the application context
+     */
     public static void setContext(Context context) {
         applicationContext = context;
     }
 
+    /**
+     * Get the movie database
+     * @return the movie database
+     */
     public static MovieDatabase getMovieDatabase() {
         if (movieDatabase == null) {
             movieDatabase = Room.databaseBuilder(applicationContext,

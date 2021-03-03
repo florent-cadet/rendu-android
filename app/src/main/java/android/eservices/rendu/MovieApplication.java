@@ -19,6 +19,9 @@ public class MovieApplication extends Application {
 
     public static final String displayChangeAction = "DISPLAY_CHANGE";
 
+    /**
+     * Override the application onCreate to initialize the application
+     */
     @Override
     public void onCreate() {
         super.onCreate();

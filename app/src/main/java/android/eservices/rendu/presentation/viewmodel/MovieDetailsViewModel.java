@@ -40,6 +40,11 @@ public class MovieDetailsViewModel extends ViewModel {
         return movieDeletedEvent;
     }
 
+    /**
+     * Get the details of a movie from the service
+     * @param movieId the id of the movie
+     * @return a MutableLiveData with the movie
+     */
     public MutableLiveData<MovieDetailItemViewModel> getMovieDetails(int movieId) {
         compositeDisposable.clear();
         compositeDisposable.add(movieDisplayRepository.getMovieById(movieId)
@@ -60,6 +65,10 @@ public class MovieDetailsViewModel extends ViewModel {
         return movie;
     }
 
+    /**
+     * Add a movie in the database
+     * @param movieId the id of the movie to add
+     */
     public void addMovieToWatched(final int movieId) {
         movieAddedEvent.setValue(new Event<Boolean>(false));
         compositeDisposable.add(movieDisplayRepository.addMovieToWatched(movieId)
@@ -78,6 +87,10 @@ public class MovieDetailsViewModel extends ViewModel {
                 }));
     }
 
+    /**
+     * Remove a movie from the database
+     * @param movieId the id of the movie to remove
+     */
     public void removeMovieFromWatched(final int movieId) {
         movieAddedEvent.setValue(new Event<Boolean>(false));
         compositeDisposable.add(movieDisplayRepository.removeMovieFromWatched(movieId)

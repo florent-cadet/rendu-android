@@ -37,6 +37,10 @@ public class MovieSearchViewModel extends ViewModel {
     private MutableLiveData<Event<Integer>> movieAddedEvent = new MutableLiveData<Event<Integer>>();
     private MutableLiveData<Event<Integer>> movieDeletedEvent = new MutableLiveData<Event<Integer>>();
 
+    /**
+     * Search a movie using the service
+     * @param query the search entered
+     */
     public void searchMovies(String query) {
         isDataLoading.postValue(true);
         compositeDisposable.clear();
@@ -59,6 +63,9 @@ public class MovieSearchViewModel extends ViewModel {
                 }));
     }
 
+    /**
+     * Get the popular movies using the service
+     */
     public void getPopularMovies() {
         isDataLoading.postValue(true);
         compositeDisposable.clear();
@@ -81,6 +88,10 @@ public class MovieSearchViewModel extends ViewModel {
                 }));
     }
 
+    /**
+     * add a movie in the database
+     * @param movieId the id of the movie to add
+     */
     public void addMovieToWatched(final int movieId) {
         compositeDisposable.add(movieDisplayRepository.addMovieToWatched(movieId)
                 .subscribeOn(Schedulers.io())
@@ -98,6 +109,10 @@ public class MovieSearchViewModel extends ViewModel {
                 }));
     }
 
+    /**
+     * Remove a movie from the databse
+     * @param movieId the id of the movie to remove
+     */
     public void removeMovieFromWatched(final int movieId) {
         compositeDisposable.add(movieDisplayRepository.removeMovieFromWatched(movieId)
                 .subscribeOn(Schedulers.io())

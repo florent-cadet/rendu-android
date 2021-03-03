@@ -8,6 +8,11 @@ import java.util.List;
 
 public class MovieToViewModelMapper {
 
+    /**
+     * Map a list of Movie to a list of MovieItemViewModel
+     * @param movieList the list of movies to map
+     * @return the mapped list of movies
+     */
     public List<MovieItemViewModel> map(List<Movie> movieList) {
         List<MovieItemViewModel> movieItemViewModelList = new ArrayList<>();
         for (Movie movie: movieList) {

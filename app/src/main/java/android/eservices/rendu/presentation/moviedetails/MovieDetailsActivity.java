@@ -33,6 +33,10 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private TextView seenDateTextView;
     private MovieDetailsViewModel movieDetailsViewModel;
 
+    /**
+     * Override of the onCreateMethod to set up the activity
+     * @param savedInstanceState the savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,9 @@ public class MovieDetailsActivity extends AppCompatActivity {
         registerViewModel();
     }
 
+    /**
+     * Get all the elements of the layout and setup the toolbar
+     */
     public void setupView() {
         titleTextView = findViewById(R.id.title_movie_detail);
         posterImageView = findViewById(R.id.poster_movie_detail);
@@ -60,6 +67,9 @@ public class MovieDetailsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Register the view model and the content of the elements of the layout
+     */
     public void registerViewModel() {
         movieDetailsViewModel = new ViewModelProvider(this, FakeDependencyInjection.getViewModelFactory()).get(MovieDetailsViewModel.class);
         final int movieId = getIntent().getIntExtra("movieId", 0);

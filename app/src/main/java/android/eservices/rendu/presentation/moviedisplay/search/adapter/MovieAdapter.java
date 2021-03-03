@@ -56,6 +56,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             });
         }
 
+        /**
+         * Bind the content of the elements of the layout from the MovieItemViewModel
+         * @param movieItemViewModel a MovieItemViewModel
+         */
         void bind(MovieItemViewModel movieItemViewModel) {
             this.movieItemViewModel = movieItemViewModel;
             titleTextView.setText(movieItemViewModel.getTitle());
@@ -78,12 +82,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         this.movieActionInterface = movieActionInterface;
     }
 
+    /**
+     * Set the list of the MovieItemViewModel and notify in case of change
+     * @param movieItemViewModelList the list to set
+     */
     public void bindViewModels(List<MovieItemViewModel> movieItemViewModelList) {
         this.movieItemViewModelList.clear();
         this.movieItemViewModelList.addAll(movieItemViewModelList);
         notifyDataSetChanged();
     }
 
+    /**
+     * Override of the onCreateViewHolder to prepare the view
+     * @param parent the parent
+     * @param viewType the viewType
+     * @return
+     */
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent,
                                               int viewType) {
@@ -93,11 +107,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return movieViewHolder;
     }
 
+    /**
+     * Bind the elements of the MovieItemViewModel list in the view holder
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
         holder.bind(movieItemViewModelList.get(position));
     }
 
+    /**
+     * Get the number of items
+     * @return the size of the MovieItemViewModel list
+     */
     @Override
     public int getItemCount() {
         return movieItemViewModelList.size();

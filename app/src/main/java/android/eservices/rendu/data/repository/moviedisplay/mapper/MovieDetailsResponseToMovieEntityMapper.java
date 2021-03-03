@@ -8,6 +8,11 @@ import java.util.Date;
 
 public class MovieDetailsResponseToMovieEntityMapper {
 
+    /**
+     * Map a MovieDetailsResponse to a MovieEntity
+     * @param movie the MovieDetailsResponse to map
+     * @return the mapped MovieDetailsResponse
+     */
     public MovieEntity map(MovieDetailsResponse movie) {
         MovieEntity movieEntity = new MovieEntity();
         movieEntity.setId(movie.getId());

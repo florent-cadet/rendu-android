@@ -31,7 +31,10 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
         this.movieDetailsResponseToMovieEntityMapper = movieDetailsResponseToMovieEntityMapper;
     }
 
-
+    /**
+     * Get the popular movies and set the seenDate of the movies to non empty string if the id of the movie is in the database
+     * @return the popular movies
+     */
     @Override
     public Single<MovieSearchResponse> getPopularMovies() {
         return movieDisplayRemoteDataSource.getPopularMoviesResponse()
@@ -49,6 +52,11 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
         });
     }
 
+    /**
+     * Get the searched movie and set the seenDate of the movies to non empty string if the id of the movie is in the database
+     * @param query the search
+     * @return the searched movies
+     */
     @Override
     public Single<MovieSearchResponse> getMovieSearchResponse(String query) {
         return movieDisplayRemoteDataSource.getMovieSearchResponse(query).zipWith(movieDisplayLocalDataSource.getWatchedIdList(), new BiFunction<MovieSearchResponse, List<Integer>, MovieSearchResponse>() {
@@ -65,6 +73,11 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
         });
     }
 
+    /**
+     * Get the details of the movie, map the response to a movie entity and save it in the databse
+     * @param movieId the id of the movie
+     * @return a Completable
+     */
     @Override
     public Completable addMovieToWatched(int movieId) {
         return movieDisplayRemoteDataSource.getMovieDetails(movieId).map(new Function<MovieDetailsResponse, MovieEntity>() {
@@ -80,16 +93,30 @@ public class MovieDisplayDataRepository implements MovieDisplayRepository {
         });
     }
 
+    /**
+     * Remove a movie from the databse
+     * @param movieId the id of the movie to remove
+     * @return a Completable
+     */
     @Override
     public Completable removeMovieFromWatched(int movieId) {
         return movieDisplayLocalDataSource.deleteMovieFromWatched(movieId);
     }
 
+    /**
+     * Get the movies watched from the databse
+     * @return the movies watched
+     */
     @Override
     public Flowable<List<MovieEntity>> getWatchedMovies() {
         return movieDisplayLocalDataSource.loadWatched();
     }
 
+    /**
+     * Get the details of a movie from the api and set it's seen date to the value in the database if the movie has been watched
+     * @param movieId the id of the movie
+     * @return the details of the movie
+     */
     @Override
     public Single<MovieDetailsResponse> getMovieById(int movieId) {
         return movieDisplayRemoteDataSource.getMovieDetails(movieId).zipWith(movieDisplayLocalDataSource.getById(movieId), new BiFunction<MovieDetailsResponse, MovieEntity, MovieDetailsResponse>() {

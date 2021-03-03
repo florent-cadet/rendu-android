@@ -29,7 +29,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import static android.eservices.rendu.MovieApplication.displayChangeAction;
 
@@ -58,6 +57,13 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         return new SearchFragment();
     }
 
+    /**
+     * Override the onCreateView to prepare the fragment
+     * @param inflater the layoutInflater
+     * @param container the container
+     * @param savedInstanceState the savedInstanceState
+     * @return the view
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,6 +72,10 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         return rootView;
     }
 
+    /**
+     * Override the onActivityCreated to prepare the fragment
+     * @param savedInstanceState the savedInstanceState
+     */
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -73,11 +83,12 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         setupAdapterOnRecyclerView();
         setupLayoutOnRecyclerView(1);
         progressBar = rootView.findViewById(R.id.progress_bar);
-
-
-        registerViewModels();
+        registerViewModel();
     }
 
+    /**
+     * Override the onStart to prepare a broadcastReceiver if the fragment is resumed
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -85,7 +96,10 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         getActivity().registerReceiver(receiverUpdateDownload, filter);
     }
 
-    private void registerViewModels() {
+    /**
+     * Register the view model and prepare the onChanged
+     */
+    private void registerViewModel() {
         movieSearchViewModel = new ViewModelProvider(requireActivity(), FakeDependencyInjection.getViewModelFactory()).get(MovieSearchViewModel.class);
 
         movieSearchViewModel.getMovies().observe(getViewLifecycleOwner(), new Observer<List<MovieItemViewModel>>() {
@@ -105,6 +119,9 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         movieSearchViewModel.getPopularMovies();
     }
 
+    /**
+     * Set up the search view to handle the search
+     */
     private void setupSearchView() {
         searchView = rootView.findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -127,12 +144,19 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         });
     }
 
+    /**
+     * Set up the adapter on the recyclerview
+     */
     private void setupAdapterOnRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         movieAdapter = new MovieAdapter(this);
         recyclerView.setAdapter(movieAdapter);
     }
 
+    /**
+     * Set up the layout of the recyclerview
+     * @param layout 1 to display a list, 2 to display a grid
+     */
     private void setupLayoutOnRecyclerView(int layout) {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         if(layout == 1) {
@@ -142,6 +166,9 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         }
     }
 
+    /**
+     * Override the onStop to unregister the broadcast receiver if the fragment is stopped
+     */
     @Override
     public void onStop() {
         super.onStop();
@@ -154,6 +181,11 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         }
     }
 
+    /**
+     * Handle the click on the watched button
+     * @param movieId the id of the movie clicked
+     * @param watched if the movie was watched or not before the click
+     */
     @Override
     public void onWatchedButtonClicked(int movieId, boolean watched) {
         if(watched) {
@@ -163,6 +195,10 @@ public class SearchFragment extends Fragment implements MovieActionInterface {
         }
     }
 
+    /**
+     * Start new activity to get the details of the movie clicked
+     * @param movieId the id of the movie clicked
+     */
     @Override
     public void onItemClicked(int movieId) {
         Intent intent = new Intent(getActivity(), MovieDetailsActivity.class);

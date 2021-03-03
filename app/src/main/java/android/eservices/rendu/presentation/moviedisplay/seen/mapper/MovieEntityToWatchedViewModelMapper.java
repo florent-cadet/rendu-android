@@ -8,6 +8,11 @@ import java.util.List;
 
 public class MovieEntityToWatchedViewModelMapper {
 
+    /**
+     * Map a list of MovieEntity to a list of MovieItemViewModel
+     * @param movieList the list of movies to map
+     * @return the mapped list of movies
+     */
     public List<MovieItemViewModel> map(List<MovieEntity> movieList) {
         List<MovieItemViewModel> movieItemViewModelList = new ArrayList<>();
         for (MovieEntity movie: movieList) {

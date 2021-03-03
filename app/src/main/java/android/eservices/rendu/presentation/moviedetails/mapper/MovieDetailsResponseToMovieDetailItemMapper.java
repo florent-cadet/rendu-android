@@ -6,6 +6,11 @@ import android.eservices.rendu.presentation.moviedetails.model.MovieDetailItemVi
 
 public class MovieDetailsResponseToMovieDetailItemMapper {
 
+    /**
+     * Map a MovieDetailsResponse to a MovieDetailItemViewModel
+     * @param movieDetailsResponse the movieDetailsResponse to map
+     * @return the mapped MovieDetailsResponse in a MovieDetailItemViewModel
+     */
     public MovieDetailItemViewModel map(MovieDetailsResponse movieDetailsResponse) {
         MovieDetailItemViewModel movieDetailItemViewModel = new MovieDetailItemViewModel();
         movieDetailItemViewModel.setTitle(movieDetailsResponse.getTitle());

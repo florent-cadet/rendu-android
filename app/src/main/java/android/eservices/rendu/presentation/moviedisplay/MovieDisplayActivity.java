@@ -22,6 +22,10 @@ public class MovieDisplayActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private static int displayState = 1;
 
+    /**
+     * Override the onCreate to set up the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,9 @@ public class MovieDisplayActivity extends AppCompatActivity {
         setupViewPagerAndTabs();
     }
 
+    /**
+     * Set up the view pager to set the fragments
+     */
     private void setupViewPagerAndTabs() {
         viewPager = findViewById(R.id.tab_viewpager);
 
@@ -61,13 +68,22 @@ public class MovieDisplayActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Override the onCreateOptionsMenu to set the correct menu
+     * @param menu the men
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    /**
+     * Override the onOptionsItemSelected to handle the selection of a MenuItem
+     * @param item the item selected
+     * @return the super value
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

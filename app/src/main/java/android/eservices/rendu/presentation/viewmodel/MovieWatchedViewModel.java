@@ -38,6 +38,10 @@ public class MovieWatchedViewModel extends ViewModel {
 
     private MutableLiveData<Event<Integer>> movieDeletedEvent = new MutableLiveData<Event<Integer>>();
 
+    /**
+     * Get the watched movie from the database
+     * @return the watched movies
+     */
     public MutableLiveData<List<MovieItemViewModel>> getWatchedMovies() {
         isDataLoading.setValue(true);
         if (movies == null) {
@@ -69,6 +73,10 @@ public class MovieWatchedViewModel extends ViewModel {
         return movies;
     }
 
+    /**
+     * Remove a movie from the database
+     * @param movieId the id of the movie to remove
+     */
     public void removeMovieFromWatched(final int movieId) {
         compositeDisposable.add(movieDisplayRepository.removeMovieFromWatched(movieId)
                 .subscribeOn(Schedulers.io())
