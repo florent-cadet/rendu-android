@@ -1,6 +1,6 @@
 package android.eservices.rendu.presentation.viewmodel;
 
-import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayRepository;
+import android.eservices.rendu.data.repository.MovieDisplayRepository;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;

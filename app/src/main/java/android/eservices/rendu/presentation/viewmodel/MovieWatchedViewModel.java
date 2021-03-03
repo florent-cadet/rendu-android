@@ -1,9 +1,8 @@
 package android.eservices.rendu.presentation.viewmodel;
 
 import android.eservices.rendu.data.entity.MovieEntity;
-import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayRepository;
+import android.eservices.rendu.data.repository.MovieDisplayRepository;
 import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieItemViewModel;
-import android.eservices.rendu.presentation.moviedisplay.search.mapper.MovieToViewModelMapper;
 import android.eservices.rendu.presentation.moviedisplay.seen.mapper.MovieEntityToWatchedViewModelMapper;
 
 import androidx.lifecycle.MutableLiveData;

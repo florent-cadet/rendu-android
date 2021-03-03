@@ -1,7 +1,7 @@
 package android.eservices.rendu.presentation.viewmodel;
 
 import android.eservices.rendu.data.api.model.MovieSearchResponse;
-import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayRepository;
+import android.eservices.rendu.data.repository.MovieDisplayRepository;
 import android.eservices.rendu.presentation.moviedisplay.search.adapter.MovieItemViewModel;
 import android.eservices.rendu.presentation.moviedisplay.search.mapper.MovieToViewModelMapper;
 

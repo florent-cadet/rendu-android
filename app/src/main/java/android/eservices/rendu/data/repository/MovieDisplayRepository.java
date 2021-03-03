@@ -1,4 +1,4 @@
-package android.eservices.rendu.data.repository.moviedisplay;
+package android.eservices.rendu.data.repository;
 
 import android.eservices.rendu.data.api.model.MovieDetailsResponse;
 import android.eservices.rendu.data.api.model.MovieSearchResponse;

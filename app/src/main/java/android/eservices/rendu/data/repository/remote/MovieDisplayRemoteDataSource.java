@@ -1,8 +1,7 @@
-package android.eservices.rendu.data.repository.moviedisplay.remote;
+package android.eservices.rendu.data.repository.remote;
 
 import android.eservices.rendu.MovieApplication;
 import android.eservices.rendu.data.api.MovieDisplayService;
-import android.eservices.rendu.data.api.model.Movie;
 import android.eservices.rendu.data.api.model.MovieDetailsResponse;
 import android.eservices.rendu.data.api.model.MovieSearchResponse;
 

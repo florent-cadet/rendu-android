@@ -3,11 +3,11 @@ package android.eservices.rendu.data.di;
 import android.content.Context;
 import android.eservices.rendu.data.api.MovieDisplayService;
 import android.eservices.rendu.data.db.MovieDatabase;
-import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayDataRepository;
-import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayRepository;
-import android.eservices.rendu.data.repository.moviedisplay.local.MovieDisplayLocalDataSource;
-import android.eservices.rendu.data.repository.moviedisplay.mapper.MovieDetailsResponseToMovieEntityMapper;
-import android.eservices.rendu.data.repository.moviedisplay.remote.MovieDisplayRemoteDataSource;
+import android.eservices.rendu.data.repository.MovieDisplayDataRepository;
+import android.eservices.rendu.data.repository.MovieDisplayRepository;
+import android.eservices.rendu.data.repository.local.MovieDisplayLocalDataSource;
+import android.eservices.rendu.data.repository.mapper.MovieDetailsResponseToMovieEntityMapper;
+import android.eservices.rendu.data.repository.remote.MovieDisplayRemoteDataSource;
 import android.eservices.rendu.presentation.viewmodel.ViewModelFactory;
 
 import androidx.room.Room;

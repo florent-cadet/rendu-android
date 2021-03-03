@@ -1,4 +1,4 @@
-package android.eservices.rendu.data.repository.moviedisplay.mapper;
+package android.eservices.rendu.data.repository.mapper;
 
 import android.eservices.rendu.data.api.model.MovieDetailsResponse;
 import android.eservices.rendu.data.entity.MovieEntity;

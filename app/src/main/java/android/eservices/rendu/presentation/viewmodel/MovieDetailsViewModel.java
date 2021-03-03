@@ -1,7 +1,7 @@
 package android.eservices.rendu.presentation.viewmodel;
 
 import android.eservices.rendu.data.api.model.MovieDetailsResponse;
-import android.eservices.rendu.data.repository.moviedisplay.MovieDisplayRepository;
+import android.eservices.rendu.data.repository.MovieDisplayRepository;
 import android.eservices.rendu.presentation.moviedetails.model.MovieDetailItemViewModel;
 import android.eservices.rendu.presentation.moviedetails.mapper.MovieDetailsResponseToMovieDetailItemMapper;
 

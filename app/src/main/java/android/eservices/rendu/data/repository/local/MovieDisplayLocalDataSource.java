@@ -1,4 +1,4 @@
-package android.eservices.rendu.data.repository.moviedisplay.local;
+package android.eservices.rendu.data.repository.local;
 
 import android.eservices.rendu.data.db.MovieDatabase;
 import android.eservices.rendu.data.entity.MovieEntity;
@@ -7,7 +7,6 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 public class MovieDisplayLocalDataSource {

@@ -1,21 +1,19 @@
-package android.eservices.rendu.data.repository.moviedisplay;
+package android.eservices.rendu.data.repository;
 
 import android.eservices.rendu.data.api.model.Movie;
 import android.eservices.rendu.data.api.model.MovieDetailsResponse;
 import android.eservices.rendu.data.api.model.MovieSearchResponse;
 import android.eservices.rendu.data.entity.MovieEntity;
-import android.eservices.rendu.data.repository.moviedisplay.local.MovieDisplayLocalDataSource;
-import android.eservices.rendu.data.repository.moviedisplay.mapper.MovieDetailsResponseToMovieEntityMapper;
-import android.eservices.rendu.data.repository.moviedisplay.remote.MovieDisplayRemoteDataSource;
+import android.eservices.rendu.data.repository.local.MovieDisplayLocalDataSource;
+import android.eservices.rendu.data.repository.mapper.MovieDetailsResponseToMovieEntityMapper;
+import android.eservices.rendu.data.repository.remote.MovieDisplayRemoteDataSource;
 
-import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
 
